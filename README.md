@@ -26,7 +26,7 @@ Publish-AWSPowerShellLambda -ScriptPath \LambdaFunctionRdsSgFind\LambdaFunctionR
 IAM create ne User and add user policy
  
 
-Name  : LambdaCreatePolicy
+Name  : LambdaCreatePolicyAPI
 
 
 {
@@ -92,7 +92,7 @@ LambdaRds policy
 
 Add to Lambda policy.
 
-LambdaDeleteIAM policy
+LambdaDeleteEC2Resources access policy
 
 {
     "Version": "2012-10-17",
