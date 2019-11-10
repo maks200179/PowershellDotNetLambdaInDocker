@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+    powershell:
+        container_name: powershell
+        build:
+            context: ./powershell/
+            dockerfile: Dockerfile
+        ports:
+            - "52:22"
+        networks:
+            - powershell
+        tty: true
+        privileged: true
+
+            
+networks:
+    powershell:
+        driver: bridge
