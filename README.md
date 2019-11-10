@@ -4,11 +4,10 @@ IAM Web console  -> add programatic user
 
 
 Access key ID
-AKIAQVTG2PEGQXWELxxxxxxx
+xxxxxxxxxxxxxxxxxxx
 
 Secret access key
-use9vzz5LLf9qgL/fqxHoApTVxxxxxxxx
-
+xxxxxxxxxxxxxxxxxxxx
 
 To install docker and docker compose use command   "./install_env.sh --docker_env" or "bash install_env.sh --docker_env"
 To build docker use "./build.sh" or "bash build.sh"  
@@ -19,7 +18,7 @@ docker exec -it powershell bash
 
 pwsh  to run powershell
 
-Set-AWSCredential  -AccessKey AKIAQVTG2PEGQXWxxxxx   -SecretKey use9vzz5LLf9qgL/fqxHoApTVx/iixxxxxxxx  -StoreAs MyNewProfile
+Set-AWSCredential  -AccessKey xxxxxxxxxxxxxxxxxxx   -SecretKey xxxxxxxxxxxxxxxxxxxxxxx  -StoreAs MyNewProfile
 Set-AWSCredentials -StoredCredentials MyNewProfile
 Set-DefaultAWSRegion -Region us-east-2
 Publish-AWSPowerShellLambda -ScriptPath \LambdaFunctionRdsSgFind\LambdaFunctionRdsSgFind8.ps1 -Name  LambdaFunctionRdsSgFind8 -Region us-east-2
