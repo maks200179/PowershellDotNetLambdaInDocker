@@ -12,7 +12,7 @@ xxxxxxxxxxxxxxxxxxxx
 To install docker and docker compose use command   "./install_env.sh --docker_env" or "bash install_env.sh --docker_env"
 To build docker use "./build.sh" or "bash build.sh"  
 
-docker cp /git_powershell/app/Pwsh_object_version.ps1  powershell:/LambdaFunctionRdsSgFind/Pwsh_object_version.ps1
+docker cp /git_powershell/app/Pwsh_object_version.ps1  powershell:/LambdaFunctionRdsSgFind/
 
 docker exec -it powershell bash
 
