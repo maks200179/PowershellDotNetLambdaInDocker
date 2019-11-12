@@ -14,7 +14,7 @@ To build docker powershell use "./build.sh" or "bash build.sh"
 
 
 
-#docker exec -it powershell bash
+
 
 
 
