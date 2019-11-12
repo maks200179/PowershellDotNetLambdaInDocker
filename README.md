@@ -1,5 +1,5 @@
 
-# AWS: create IAM User 
+# AWS: Create an IAM User 
 
 IAM Web console  -> create programatic user. 
 
