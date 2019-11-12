@@ -13,7 +13,7 @@ xxxxxxxxxxxxxxxxxxxx
  
 # User access permission to create Lambda
 
-Name  : LambdaCreatePolicyAPI
+PolicyName  : LambdaCreatePolicyAPI
 
 ```
 {
