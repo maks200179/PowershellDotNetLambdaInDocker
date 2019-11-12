@@ -4,10 +4,10 @@ services:
     powershell:
         container_name: powershell
         build:
-            context: ./powershell/
-            dockerfile: Dockerfile
+            context: ./
+            dockerfile: ./powershell/Dockerfile
         ports:
-            - "52:22"
+            - "302:22"
         networks:
             - powershell
         tty: true

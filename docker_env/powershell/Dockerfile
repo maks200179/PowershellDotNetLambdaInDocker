@@ -27,10 +27,11 @@ RUN pwsh -c "New-AWSPowerShellLambda -ScriptName LambdaFunctionRdsSgFind -Templa
 
 
 
+
 #install ssh 
 RUN yum -y install  openssh-server 
 RUN rm /etc/ssh/sshd_config
-COPY sshd_config /etc/ssh/
+COPY ./powershell/sshd_config /etc/ssh/
 RUN chown root:root /etc/ssh/sshd_config
 RUN chmod -R 600 /etc/ssh/sshd_config
 
@@ -40,8 +41,9 @@ RUN chmod -R 600 /etc/ssh/sshd_config
 
 
 # Copy custom data
-COPY container-files /
-RUN chmod +x /bootstrap.sh
+RUN mkdir /app
+COPY ./app /app
+RUN chmod -R +x /app/*
 
 
 ENTRYPOINT ["/usr/sbin/init"]
