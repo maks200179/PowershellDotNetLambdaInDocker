@@ -1,7 +1,7 @@
 
-# AWS create IAM new User 
+# AWS: create IAM User 
 
-IAM Web console  -> add programatic user 
+IAM Web console  -> create programatic user. 
 
 Access key ID
 xxxxxxxxxxxxxxxxxxx
@@ -49,7 +49,7 @@ Name  : LambdaCreatePolicyAPI
 Should Add to Lambda policy.
 
 
-LambdaRds policy
+LambdaRds policy json
 
 ```
 {
@@ -83,8 +83,8 @@ LambdaRds policy
 
 # Docker compose env 
 
-
 To install docker and docker compose use command   "./install_env.sh --docker_env" or "bash install_env.sh --docker_env"
+
 To build docker powershell use "./build.sh" or "bash build.sh"  
 
 
