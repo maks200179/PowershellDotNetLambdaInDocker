@@ -12,16 +12,19 @@ xxxxxxxxxxxxxxxxxxxx
 To install docker and docker compose use command   "./install_env.sh --docker_env" or "bash install_env.sh --docker_env"
 To build docker powershell use "./build.sh" or "bash build.sh"  
 
-docker cp /git_powershell/app/Pwsh_object_version.ps1  powershell:/LambdaFunctionRdsSgFind/
 
-docker exec -it powershell bash
 
-pwsh  to run powershell
+#docker exec -it powershell bash
 
-Set-AWSCredential  -AccessKey xxxxxxxxxxxxxxxxxxx   -SecretKey xxxxxxxxxxxxxxxxxxxxxxx  -StoreAs MyNewProfile
-Set-AWSCredentials -StoredCredentials MyNewProfile
-Set-DefaultAWSRegion -Region us-east-2
-Publish-AWSPowerShellLambda -ScriptPath \LambdaFunctionRdsSgFind\Pwsh_object_version.ps1 -Name  LambdaFunctionRdsSgFind -Region us-east-2
+
+
+docker exec powershell pwsh -c "Set-AWSCredential  -AccessKey xxxxxxxxxxxxxxxxxxx   -SecretKey xxxxxxxxxxxxxxxxxxxxxxx  -StoreAs MyNewProfile"
+docker exec powershell pwsh -c "Initialize-AWSDefaultConfiguration -ProfileName MyNewProfile -Region us-east-2"
+docker exec powershell pwsh -c "Publish-AWSPowerShellLambda -ScriptPath \app\Pwsh_object_version.ps1 -Name  LambdaFunctionName "
+
+
+
+
 
 IAM create ne User and add user policy
  
