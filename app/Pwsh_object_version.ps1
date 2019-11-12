@@ -1,37 +1,45 @@
 #Requires -Modules @{ModuleName='AWSPowerShell.NetCore';ModuleVersion='3.3.618.0'}
 $VpcSecurityGroupIDToRemove = $LambdaInput.VpcSecurityGroupVar
+#$VpcSecurityGroupIDToRemove = "sg-09bdc4bc5ee2cbfe2"
+#$VpcSecurityGroupIDToRemove = "sg-003a7d6b11d268582"
 
 $rulesRemoved = 0
 
-	try {
-		$RDSInstances = Get-RDSDBInstance 
-	} catch {
-		$ErrorMessage = $_.Exception.Message
-		Write-Warning "Get-AWSRDSDetails - Error: $ErrorMessage"
-		return
-	}
+    try {
+        $RDSInstances = Get-RDSDBInstance  -ErrorAction stop
+    } catch {
+        $ErrorMessage = $_.Exception.Message
+        Write-Error "Get-AWSRDSDetails - Error: $ErrorMessage"
+        Break
+    }
     
-	foreach ($instance in $RDSInstances) {
-			
-            $VpcGroupID           = ($instance.VpcSecurityGroups | Select-Object -Expand VpcSecurityGroupId).Trim() 
-			$ARN			      = ($instance.DBInstanceArn |ft -HideTableHeaders |	 Out-String).Trim()
-			$Environment	      = Get-RDSTagForResource  $instance.DBInstanceArn | Where-Object {$_.key -eq "Phase"} | Select-Object -Expand Value
-            $VpcSecurityGroupName = (Get-EC2SecurityGroup  -GroupId $VpcGroupID | Select-Object -Expand GroupName).Trim() 
-             
+    foreach ($instance in $RDSInstances) {
+    
+            [array]$VpcGroupID           = ($instance.VpcSecurityGroups.VpcSecurityGroupId).Trim() 
+            $Environment          = Get-RDSTagForResource  $instance.DBInstanceArn | Where-Object {$_.key -eq "Phase"} | Select-Object -Expand Value
+            $DBInstanceIdentifier = ($instance.DBInstanceIdentifier | ft -HideTableHeaders | Out-String).Trim()
             
-            if(($VpcGroupID -Contains $VpcSecurityGroupToRemove) -and ($Environment -Contains "Prod")) {
-                Write-Host "Security_Group_Id : " $VpcGroupID
-                Write-Host "ARN_ID : " $ARN
-                Write-Host "Vpc_Security_Group_Name : " $VpcSecurityGroupName
+            if(($VpcGroupID -Contains $VpcSecurityGroupIDToRemove) -and ($Environment -Contains "Prod")) {
+            
+                if($VpcGroupID.Count -gt 1) {
+                    [System.Collections.ArrayList]$VpcGroupIDEdited = $VpcGroupID
+                    $VpcGroupIDEdited.Remove($VpcSecurityGroupIDToRemove)
+                }
+                
+                else  {
+                    $VpcGroupIDEdited = $VpcGroupID
+                }
+                
+                
                 try {
-                    Remove-EC2SecurityGroup -GroupId $VpcGroupID -Force
+                    Edit-RDSDBInstance -DBInstanceIdentifier $DBInstanceIdentifier -VpcSecurityGroupId $VpcGroupIDEdited -Force -ErrorAction stop
                 } catch {
-		            $ErrorMessage = $_.Exception.Message
-		            Write-Warning "Get-AWSRDSDetails - Error: $ErrorMessage"
-		            return
-	        }    
+                    $ErrorMessage = $_.Exception.Message
+                    Write-Error "Edit-RDSDBInstance - Error: $ErrorMessage"
+                    Break
+            }    
                 $rulesRemoved++
-                Write-Host "rulesRemoved : " $rulesRemoved
-		}
+                Write-Host "CountRulesRemoved : " $rulesRemoved
+        }
 
 }
