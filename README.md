@@ -26,7 +26,7 @@ Publish-AWSPowerShellLambda -ScriptPath \LambdaFunctionRdsSgFind\LambdaFunctionR
 IAM create ne User and add user policy
  
 
-Name  : LambdaCreatePolicyAPI
+Name  : Lambda: CreateAPolicyAPI
 
 
 {
