@@ -72,7 +72,10 @@ LambdaRds policy
             "Action": [
                 "rds:DescribeDBInstances",
                 "rds:StopDBInstance",
-                "rds:StartDBInstance"
+                "rds:StartDBInstance",
+                "rds:ListTagsForResource",
+                "rds:ListTagsForResource",
+                "rds:ModifyDBInstance"
             ],
             "Resource": "*"
         },
@@ -89,36 +92,5 @@ LambdaRds policy
 }
 
 
-
-Add to Lambda policy.
-
-LambdaDeleteEC2Resources access policy
-
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ec2:AuthorizeSecurityGroupEgress",
-                "ec2:AuthorizeSecurityGroupIngress",
-                "ec2:DeleteSecurityGroup",
-                "ec2:RevokeSecurityGroupEgress",
-                "ec2:RevokeSecurityGroupIngress"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ec2:DescribeSecurityGroups",
-                "ec2:DescribeSecurityGroupReferences",
-                "ec2:DescribeStaleSecurityGroups",
-                "ec2:DescribeVpcs"
-            ],
-            "Resource": "*"
-        }
-    ]
-}
 
 ```
