@@ -54,8 +54,3 @@ VOLUME [ "/sys/fs/cgroup" ]
 
 
 
-#Set-AWSCredential  -AccessKey AKIAQVTG2PEG564LW4WZ   -SecretKey 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  -StoreAs MyNewProfile
-#Set-AWSCredentials -StoredCredentials MyNewProfile
-#Publish-AWSPowerShellLambda -ScriptPath \LambdaFunctionRdsSgFind\LambdaFunctionRdsSgFind.ps11 -Name  LambdaFunctionRdsSgFind -Region us-east-2
-#Set-DefaultAWSRegion -Region us-east-2
-#
