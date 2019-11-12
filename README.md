@@ -21,7 +21,7 @@ pwsh  to run powershell
 Set-AWSCredential  -AccessKey xxxxxxxxxxxxxxxxxxx   -SecretKey xxxxxxxxxxxxxxxxxxxxxxx  -StoreAs MyNewProfile
 Set-AWSCredentials -StoredCredentials MyNewProfile
 Set-DefaultAWSRegion -Region us-east-2
-Publish-AWSPowerShellLambda -ScriptPath \LambdaFunctionRdsSgFind\Pwsh_object_version.ps1.ps1 -Name  LambdaFunctionRdsSgFind -Region us-east-2
+Publish-AWSPowerShellLambda -ScriptPath \LambdaFunctionRdsSgFind\Pwsh_object_version.ps1 -Name  LambdaFunctionRdsSgFind -Region us-east-2
 
 IAM create ne User and add user policy
  
