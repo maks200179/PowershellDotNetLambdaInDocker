@@ -19,7 +19,7 @@ $rulesRemoved = 0
             $Environment          = Get-RDSTagForResource  $instance.DBInstanceArn | Where-Object {$_.key -eq "Phase"} | Select-Object -Expand Value
             $DBInstanceIdentifier = ($instance.DBInstanceIdentifier | ft -HideTableHeaders | Out-String).Trim()
             
-            if(($VpcGroupID -Contains $VpcSecurityGroupIDToRemove) -and ($Environment -Contains "Prod")) {
+            if(($VpcGroupID -eq $VpcSecurityGroupIDToRemove) -and ($Environment -eq "Prod")) {
             
                 if($VpcGroupID.Count -gt 1) {
                     [System.Collections.ArrayList]$VpcGroupIDEdited = $VpcGroupID
