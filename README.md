@@ -80,6 +80,42 @@ LambdaRds policy json
 }
 ```
 
+# To use EC2 manipulation the policy below required
+
+for script Pwsh_revoke_ip_adress_for_port.ps1
+
+```
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:AuthorizeSecurityGroupEgress",
+                "ec2:AuthorizeSecurityGroupIngress",
+                "ec2:DeleteSecurityGroup",
+                "ec2:RevokeSecurityGroupEgress",
+                "ec2:RevokeSecurityGroupIngress"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:DescribeSecurityGroups",
+                "ec2:DescribeSecurityGroupReferences",
+                "ec2:DescribeStaleSecurityGroups",
+                "ec2:DescribeVpcs"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+
+
+```
+
 
 # Docker compose env 
 
