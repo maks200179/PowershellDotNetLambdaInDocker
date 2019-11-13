@@ -11,11 +11,9 @@ Secret access key
 xxxxxxxxxxxxxxxxxxxx
 
 
-
+#### Lambda and IAM policy
  
 User access permission to create Lambda
-
-#### Lambda and IAM policy
 
 ```
 {
