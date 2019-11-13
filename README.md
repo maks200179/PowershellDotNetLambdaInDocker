@@ -92,7 +92,7 @@ The test event json.
   "dryRun": "$false"
 }
 ```
-# The policy itself
+# EC2 policy 
 ```
 
 {
