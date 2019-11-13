@@ -22,7 +22,7 @@ Write-Host "Found" $resultSetCount "groups with ports" $portToCheck "open"
 
 foreach ($secGroup in $secGroupList){
 
-	$PortPermissionList = $secGroup.IpPermissions | Where ToPort -in $portToCheck}
+	$PortPermissionList = $secGroup.IpPermissions | Where ToPort -in $portToCheck
 
 	
 	foreach ($ipPermisson in $PortPermissionList){
