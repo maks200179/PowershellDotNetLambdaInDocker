@@ -13,9 +13,9 @@ xxxxxxxxxxxxxxxxxxxx
 
 
  
-#### User access permission to create Lambda
+User access permission to create Lambda
 
-PolicyName  : LambdaCreatePolicyAPI
+#### Lambda and IAM policy
 
 ```
 {
