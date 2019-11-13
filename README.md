@@ -1,4 +1,4 @@
-## PowerShell core and .Net core on Docker Centos7  
+## PowerShell core 6 and .Net core 3 on Docker Centos7  
 
 
 #### AWS: Create an IAM User 
