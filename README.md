@@ -84,7 +84,7 @@ LambdaRds policy json
 
 For script Pwsh_revoke_ip_adress_for_port.ps1
 
-The test event json
+The test event json.
 ```
 {
   "portToCheck": "22",
