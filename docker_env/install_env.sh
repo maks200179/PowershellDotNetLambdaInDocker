@@ -15,23 +15,25 @@ while [[ ${1:0:2} == '--' ]] && [[ $# -ge 1 ]] ; do
 done
 
 
-if [[ ! -z $help ]]
+    if [[ ! -z $help ]]
 	then
 	{
 	echo "use --docker_env install docker envirement"
 	}
-fi
+    fi
 
-if [[ ! -z $docker_env ]]
+    if [[ ! -z $docker_env ]]
 	then
 	{
 	installed=$(yum list installed | grep docker.x86_64)
-    if [[ -z $installed  ]] ; then 
+    
+        if [[ -z $installed  ]] ; then 
 		yum -y install docker
 		systemctl enable docker
 		systemctl start docker
-	fi 
-    if [[ ! -f /usr/local/bin/docker-compose ]] ||  [[ ! -f /usr/bin/docker-compose ]] ; then
+        fi
+    
+        if [[ ! -f /usr/local/bin/docker-compose ]] ||  [[ ! -f /usr/bin/docker-compose ]] ; then
 	
 		#curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 		curl -L "https://github.com/docker/compose/releases/download/1.25.0-rc2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
@@ -40,9 +42,6 @@ if [[ ! -z $docker_env ]]
 		docker-compose --version
 		
 	fi
-
-
-
 	}
 
 
