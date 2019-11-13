@@ -1,4 +1,4 @@
-## PowerShell.core .Net.core for Lambda on Docker Centos7  
+## PowerShell.core and .Net.core for Lambda on Docker Centos7  
 
 
 #### AWS: Create an IAM User 
