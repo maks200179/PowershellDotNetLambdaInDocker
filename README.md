@@ -82,7 +82,15 @@ LambdaRds policy json
 
 # To use EC2 manipulation the policy below required
 
-for script Pwsh_revoke_ip_adress_for_port.ps1
+For script Pwsh_revoke_ip_adress_for_port.ps1
+The test event json
+```
+{
+  "portToCheck": "22",
+  "currentIp": "the_ip_you_want_to_coneect_from",
+  "dryRun": "$false"
+}
+```
 
 ```
 
