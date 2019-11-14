@@ -1,3 +1,4 @@
+#Requires -Modules @{ModuleName='AWSPowerShell.NetCore';ModuleVersion='3.3.618.0'}
 function Get-AWSRDSDetails 
 {
     [CmdletBinding()]
