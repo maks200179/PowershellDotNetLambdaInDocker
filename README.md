@@ -137,6 +137,6 @@ To build docker powershell use "./build.sh" or "bash build.sh"
 docker exec powershell pwsh -c "Set-AWSCredential  -AccessKey xxxxxxxxxxxxxxxxxxx   -SecretKey xxxxxxxxxxxxxxxxxxxxxxx  -StoreAs MyNewProfile"
 docker exec powershell pwsh -c "Initialize-AWSDefaultConfiguration -ProfileName MyNewProfile -Region us-east-2"
 docker exec -it powershell bash
-pwsh -c "Publish-AWSPowerShellLambda -ScriptPath \app\Pwsh_object_version.ps1 -Name  LambdaFunctionName" 
+pwsh -c "Publish-AWSPowerShellLambda -ScriptPath \app\Pwsh_find_a_group_rds_object_version.ps1 -Name  LambdaFunctionName" 
 
 ```
