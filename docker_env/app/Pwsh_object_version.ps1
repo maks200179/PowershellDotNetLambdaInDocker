@@ -15,7 +15,7 @@ $rulesRemoved = 0
     
     foreach ($instance in $RDSInstances) {
     
-            [array]$VpcGroupID           = ($instance.VpcSecurityGroups.VpcSecurityGroupId).Trim() 
+            [array]$VpcGroupID    = ($instance.VpcSecurityGroups.VpcSecurityGroupId).Trim() 
             $Environment          = Get-RDSTagForResource  $instance.DBInstanceArn | Where-Object {$_.key -eq "Phase"} | Select-Object -Expand Value
             $DBInstanceIdentifier = ($instance.DBInstanceIdentifier | ft -HideTableHeaders | Out-String).Trim()
             
@@ -29,7 +29,6 @@ $rulesRemoved = 0
                 else  {
                     $VpcGroupIDEdited = $VpcGroupID
                 }
-                
                 
                 try {
                     Edit-RDSDBInstance -DBInstanceIdentifier $DBInstanceIdentifier -VpcSecurityGroupId $VpcGroupIDEdited -Force -ErrorAction stop
