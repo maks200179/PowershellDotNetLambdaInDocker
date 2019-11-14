@@ -15,7 +15,7 @@ function Get-AWSRDSDetails
     } catch {
         $ErrorMessage = $_.Exception.Message
         Write-Warning "Get-AWSRDSDetails - Error: $ErrorMessage"
-        return
+        break
     }
     
     foreach ($instance in $RDSInstances) 
@@ -45,7 +45,7 @@ function Get-AWSRDSDetails
             {
                 $ErrorMessage = $_.Exception.Message
                 Write-Error "Edit-RDSDBInstance - Error: $ErrorMessage"
-                Break
+                return
             }    
                 $rulesRemoved++
                 Write-Host "CountRulesRemoved : " $rulesRemoved
