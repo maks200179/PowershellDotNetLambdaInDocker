@@ -36,18 +36,18 @@ function Get-AWSRDSDetails
                 
             else
             {
-                Write-Host "The RDS has only one vpc group cant remove"
-                Exit
+                Write-Host "The RDS has only one vpc group cant remove : " $DBInstanceIdentifier 
+                return
             }
                 
             try 
             {
-                Edit-RDSDBInstance -DBInstanceIdentifier $DBInstanceIdentifier -VpcSecurityGroupId $VpcGroupIDEdited -Force -ErrorAction stop
+                Edit-RDSDBInstance -DBInstanceIdentifier $DBInstanceIdentifier -VpcSecurityGroupId $VpcGroupIDEdited -Force 
             }   catch 
             {
                 $ErrorMessage = $_.Exception.Message
-                Write-Error "Edit-RDSDBInstance - Error: $ErrorMessage"
-                
+                Write-Error "Edit-RDSDBInstance $DBInstanceIdentifier - Error: $ErrorMessage"
+                return
             }    
                 $rulesRemoved++
                 Write-Host "CountRulesRemoved : " $rulesRemoved
