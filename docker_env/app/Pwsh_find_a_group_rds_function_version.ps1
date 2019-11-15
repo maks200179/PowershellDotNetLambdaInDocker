@@ -11,11 +11,11 @@ function Get-AWSRDSDetails
     $rulesRemoved = 0
 
     try {
-        $RDSInstances = Get-RDSDBInstance 
+        $RDSInstances = Get-RDSDBInstance -ErrorAction stop
     } catch {
         $ErrorMessage = $_.Exception.Message
         Write-Warning "Get-AWSRDSDetails - Error: $ErrorMessage"
-        break
+        
     }
     
     foreach ($instance in $RDSInstances) 
@@ -28,6 +28,7 @@ function Get-AWSRDSDetails
         {
     
             if($VpcGroupID.Count -gt 1) 
+            
             {
                 [System.Collections.ArrayList]$VpcGroupIDEdited = $VpcGroupID
                 $VpcGroupIDEdited.Remove($VpcSecurityGroupIDToRemove)
@@ -35,7 +36,8 @@ function Get-AWSRDSDetails
                 
             else
             {
-                $VpcGroupIDEdited = $VpcGroupID
+                Write-Host "The RDS has only one vpc group cant remove"
+                Exit
             }
                 
             try 
@@ -45,7 +47,7 @@ function Get-AWSRDSDetails
             {
                 $ErrorMessage = $_.Exception.Message
                 Write-Error "Edit-RDSDBInstance - Error: $ErrorMessage"
-                break
+                
             }    
                 $rulesRemoved++
                 Write-Host "CountRulesRemoved : " $rulesRemoved
