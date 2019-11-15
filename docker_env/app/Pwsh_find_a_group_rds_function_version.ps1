@@ -45,7 +45,7 @@ function Get-AWSRDSDetails
             {
                 $ErrorMessage = $_.Exception.Message
                 Write-Error "Edit-RDSDBInstance - Error: $ErrorMessage"
-                return
+                break
             }    
                 $rulesRemoved++
                 Write-Host "CountRulesRemoved : " $rulesRemoved
