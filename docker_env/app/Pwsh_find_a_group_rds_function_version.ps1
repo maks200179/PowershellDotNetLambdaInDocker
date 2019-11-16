@@ -50,11 +50,12 @@ function Get-AWSRDSDetails
                 Continue
             }    
                 $rulesRemoved++
-                Write-Host "CountRulesRemoved : " $rulesRemoved
         }
         
     }
-   
+    
+    Write-Host "CountRulesRemoved : " $rulesRemoved
+    
 }
 
 
