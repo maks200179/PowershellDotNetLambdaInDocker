@@ -8,7 +8,7 @@ IAM Web console  -> create programatic user.
 Access key ID
 xxxxxxxxxxxxxxxxxxx
 Secret access key
-xxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 
 #### Lambda and IAM policy
