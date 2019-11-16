@@ -3,7 +3,7 @@
 #revoke an ip and change to curentip for port
 
 #$portToCheck = "22"
-#$currentIp = "185.175.33.136"
+
 
 
 
