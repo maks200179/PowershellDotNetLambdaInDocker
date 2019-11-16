@@ -39,7 +39,7 @@ $rulesRemoved = 0
                     Continue
             }    
                 $rulesRemoved++
-                Write-Host "CountRulesRemoved : " $rulesRemoved
+                
         }
-
+        Write-Host "CountRulesRemoved : " $rulesRemoved
 }
