@@ -1,6 +1,6 @@
 $rulesRemoved = 0
-$VpcSecurityGroup = $LambdaInput.VpcSecurityGroupVar
-#$VpcSecurityGroup = "{sg-09bdc4bc5ee2cbfe2}"
+#$VpcSecurityGroup = $LambdaInput.VpcSecurityGroupVar
+$VpcSecurityGroup = "{sg-0a9cae49df2872c0d}"
 
 #$string = (Get-RDSDBInstance | Select-Object -ExpandProperty VpcSecurityGroups |ft -HideTableHeaders|	Out-String).Trim()
 $string = (Get-RDSDBInstance | select -Property	 VpcSecurityGroups,DBInstanceArn | ft -HideTableHeaders | Out-String).Trim()
