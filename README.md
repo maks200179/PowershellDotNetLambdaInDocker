@@ -59,8 +59,6 @@ LambdaRds policy json
             "Effect": "Allow",
             "Action": [
                 "rds:DescribeDBInstances",
-                "rds:StopDBInstance",
-                "rds:StartDBInstance",
                 "rds:ListTagsForResource",
                 "rds:ListTagsForResource",
                 "rds:ModifyDBInstance"
