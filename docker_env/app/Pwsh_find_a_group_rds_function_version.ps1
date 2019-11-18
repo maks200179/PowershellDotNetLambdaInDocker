@@ -15,7 +15,7 @@ function Get-AWSRDSDetails
         $RDSInstances = Get-RDSDBInstance | Select -Property  VpcSecurityGroups,DBInstanceArn,DBInstanceIdentifier -ErrorAction stop
     } catch {
         $ErrorMessage = $_.Exception.Message
-        Write-Warning "Get-AWSRDSDetails - Error: $ErrorMessage"
+        Write-Error "Get-AWSRDSDetails - Error: $ErrorMessage"
         
     }
     
