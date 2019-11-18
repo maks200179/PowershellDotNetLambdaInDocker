@@ -38,7 +38,7 @@ function Get-AWSRDSDetails
                 
             else
             {
-                Write-Host "The RDS " $DBInstanceIdentifier " has only one vpc group cant remove" 
+                Write-Host "The RDS " $DBInstanceIdentifier " has only one vpc group , cant remove" 
                 Continue
             }
                 
