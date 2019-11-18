@@ -99,21 +99,9 @@ The test event json.
         {
             "Effect": "Allow",
             "Action": [
-                "ec2:AuthorizeSecurityGroupEgress",
                 "ec2:AuthorizeSecurityGroupIngress",
-                "ec2:DeleteSecurityGroup",
-                "ec2:RevokeSecurityGroupEgress",
-                "ec2:RevokeSecurityGroupIngress"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
                 "ec2:DescribeSecurityGroups",
-                "ec2:DescribeSecurityGroupReferences",
-                "ec2:DescribeStaleSecurityGroups",
-                "ec2:DescribeVpcs"
+                "ec2:RevokeSecurityGroupIngress"
             ],
             "Resource": "*"
         }
