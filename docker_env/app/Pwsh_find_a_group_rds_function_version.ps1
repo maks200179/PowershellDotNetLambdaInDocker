@@ -22,8 +22,8 @@ function Get-AWSRDSDetails
     foreach ($instance in $RDSInstances) 
     {
         [array]$VpcGroupID    = ($instance.VpcSecurityGroups.VpcSecurityGroupId).Trim() 
-        $Environment          = Get-RDSTagForResource  $instance.DBInstanceArn | Where-Object {$_.key -eq "Phase"} | Select-Object -Expand Value
-        $DBInstanceIdentifier = ($instance.DBInstanceIdentifier | ft -HideTableHeaders | Out-String).Trim()
+        $Environment          = (Get-RDSTagForResource  $instance.DBInstanceArn | Where-Object {$_.key -eq "Phase"} | Select-Object -Expand Value).Trim() 
+        $DBInstanceIdentifier = ($instance.DBInstanceIdentifier).Trim()
         
         if(($VpcGroupID -Contains $VpcSecurityGroupIDToRemove) -and ($Environment -eq "Prod")) 
         {
