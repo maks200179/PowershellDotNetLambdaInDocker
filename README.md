@@ -60,7 +60,6 @@ LambdaRds policy json
             "Action": [
                 "rds:DescribeDBInstances",
                 "rds:ListTagsForResource",
-                "rds:ListTagsForResource",
                 "rds:ModifyDBInstance"
             ],
             "Resource": "*"
