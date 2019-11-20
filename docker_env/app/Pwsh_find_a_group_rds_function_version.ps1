@@ -13,7 +13,8 @@ function Get-AWSRDSDetails
 
     try {
         $RDSInstances = Get-RDSDBInstance | Select -Property  VpcSecurityGroups,DBInstanceArn,DBInstanceIdentifier -ErrorAction stop
-    } catch {
+    } 
+    catch {
         $ErrorMessage = $_.Exception.Message
         Write-Error "Get-AWSRDSDetails - Error: $ErrorMessage"
         
@@ -45,13 +46,15 @@ function Get-AWSRDSDetails
             try 
             {
                 Edit-RDSDBInstance -DBInstanceIdentifier $DBInstanceIdentifier -VpcSecurityGroupId $VpcGroupIDEdited -Force 
-            }   catch 
+            }   
+            catch 
             {
                 $ErrorMessage = $_.Exception.Message
                 Write-Error "Edit-RDSDBInstance - Error: $ErrorMessage"
                 Continue
             }    
-                $rulesRemoved++
+            
+            $rulesRemoved++
         }
         
     }
