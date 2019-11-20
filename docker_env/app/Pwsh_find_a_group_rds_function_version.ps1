@@ -11,14 +11,16 @@ function Get-AWSRDSDetails
     $rulesRemoved = 0
     $rulesFinded  = 0
 
-    try {
+    try 
+    {
         $RDSInstances = Get-RDSDBInstance | Select -Property  VpcSecurityGroups,DBInstanceArn,DBInstanceIdentifier -ErrorAction stop
     } 
-    catch {
+    catch 
+    {
         $ErrorMessage = $_.Exception.Message
         Write-Error "Get-AWSRDSDetails - Error: $ErrorMessage"
-        
     }
+    
     
     foreach ($instance in $RDSInstances) 
     {
