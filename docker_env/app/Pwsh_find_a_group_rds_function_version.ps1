@@ -4,8 +4,8 @@ function Get-AWSRDSDetails
     [CmdletBinding()]
     Param 
     (
-            [parameter(Mandatory=$true)]   
-            [string] $VpcSecurityGroupIDToRemove
+        [parameter(Mandatory=$true)]   
+        [string] $VpcSecurityGroupIDToRemove
     )
     
     $rulesRemoved = 0
