@@ -1,4 +1,3 @@
-## [Code of Conduct][conduct-md]
 ## PowerShell core 6 and .Net core 3 in Docker on Centos7  
 
 
