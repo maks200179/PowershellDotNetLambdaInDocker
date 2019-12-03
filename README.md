@@ -77,7 +77,7 @@ LambdaRds policy json
 }
 ```
 
-#### To use EC2 manipulations with security groups the policy below required
+#### To use EC2 the policy below required
 
 For script Pwsh_revoke_ip_adress_for_port.ps1
 
