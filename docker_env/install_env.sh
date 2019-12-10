@@ -9,7 +9,6 @@ clear
 
 while [[ ${1:0:2} == '--' ]] && [[ $# -ge 1 ]] ; do
     [[ $1 == '--docker_env' ]] && { docker_env="yes"; };
-    [[ $1 == '--monitor' ]] && { monitor="yes"; };
     [[ $1 == '--help' ]] && { help="yes"; };
     shift 2 || break
 done
