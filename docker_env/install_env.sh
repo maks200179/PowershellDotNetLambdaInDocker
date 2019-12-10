@@ -17,7 +17,7 @@ done
     if [[ ! -z $help ]]
 	then
 	{
-	echo "use --docker_env install docker envirement"
+	echo "use 'install_env.sh --docker_env' to install docker and docker-compose"
 	}
     fi
 
