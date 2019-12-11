@@ -10,7 +10,29 @@ xxxxxxxxxxxxxxxxxxx
 Secret access key
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
+#### Restrict user actiont by source Ip
 
+Create IAM new policy and attach to new user 
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": {
+        "Effect": "Deny",
+        "Action": "*",
+        "Resource": "*",
+        "Condition": {
+            "NotIpAddress": {
+                "aws:SourceIp": [
+                    "The_ip_you_want_to_allow/32",
+                    "The_ip_you_want_to_allow/32"
+                ]
+            }
+        }
+    }
+}
+
+```
 #### Lambda and IAM policy
  
 User access permission to create Lambda
