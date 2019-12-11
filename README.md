@@ -10,7 +10,7 @@ xxxxxxxxxxxxxxxxxxx
 Secret access key
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-#### Restrict user actiont by source Ip
+#### Restrict user permission by source Ip for all AWS resourses
 
 Create IAM new policy and attach to new user 
 
