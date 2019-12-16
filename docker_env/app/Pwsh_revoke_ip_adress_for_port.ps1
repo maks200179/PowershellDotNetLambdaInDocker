@@ -29,7 +29,6 @@ function Get-AWSEC2Details
         [parameter(Mandatory=$true)]   
         [bool] $DryRun
     )
-    
 
     try 
     {
@@ -75,7 +74,7 @@ function Get-AWSEC2Details
                             }
                       
                         
-
+                        }
                         
                             $cidrBlocks = New-Object 'collections.generic.list[string]'
                             $cidrBlocks.add($currentIp + "/32")
@@ -87,7 +86,8 @@ function Get-AWSEC2Details
                             
                             Write-Host "Granting permission for IP" $newIpPermissions.IpRanges.Split("/")[0] "for port" $newIpPermissions.FromPort 
                         
-                        
+                        if (!$DryRun)
+                        {
                             
                             try 
                             {
@@ -115,7 +115,7 @@ function Get-AWSEC2Details
             }
 
         }   
-}        
+}          
 
 #Get-AWSEC2Details  "22"   "192.168.1.1"  $False
 Get-AWSEC2Details $LambdaInput.portToCheck $LambdaInput.currentIp $LambdaInput.dryRun
