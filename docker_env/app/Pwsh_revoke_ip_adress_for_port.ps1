@@ -19,9 +19,7 @@ function Get-AWSEC2Details
     
     try 
     {
-    
         $secGroupList = Get-EC2SecurityGroup | Select -Property  IpPermissions,GroupId,GroupName |   Where-Object {$_.IpPermissions.ToPort -eq $portToCheck} -ErrorAction stop
-    
     }
     catch 
     {
@@ -48,9 +46,7 @@ function Get-AWSEC2Details
                         
                         try 
                         {
-                            
                             Revoke-EC2SecurityGroupIngress -GroupId $secGroup.GroupId -IpPermissions $ipPermisson   
-                            
                         } 
                         catch 
                         {
@@ -77,9 +73,7 @@ function Get-AWSEC2Details
                             
                         try 
                         {
-                       
                             Grant-EC2SecurityGroupIngress -GroupId $secGroup.GroupId -IpPermissions $newIpPermissions 
-                            
                         } 
                         catch 
                         {
