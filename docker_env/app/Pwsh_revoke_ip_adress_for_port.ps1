@@ -2,19 +2,6 @@
 
 #revoke an ip and change to curentip for port
 
-
-
-
-
-
-
-#$portToCheck = $LambdaInput.portToCheck
-#$currentIp = $LambdaInput.currentIp
-#$dryRun = $LambdaInput.dryRun
-
-
-
-
 function Get-AWSEC2Details 
 {
     [CmdletBinding()]
@@ -29,11 +16,11 @@ function Get-AWSEC2Details
         [parameter(Mandatory=$true)]   
         [bool] $DryRun
     )
-
+    
     try 
     {
     
-    $secGroupList = Get-EC2SecurityGroup | Select -Property  IpPermissions,GroupId,GroupName |   Where-Object {$_.IpPermissions.ToPort -eq $portToCheck} -ErrorAction stop
+        $secGroupList = Get-EC2SecurityGroup | Select -Property  IpPermissions,GroupId,GroupName |   Where-Object {$_.IpPermissions.ToPort -eq $portToCheck} -ErrorAction stop
     
     }
     catch 
@@ -45,8 +32,7 @@ function Get-AWSEC2Details
     
         foreach ($secGroup in $secGroupList)
         {
-
-        $PortPermissionList = $secGroup.IpPermissions | Where ToPort -in $portToCheck
+            $PortPermissionList = $secGroup.IpPermissions | Where ToPort -in $portToCheck
         
             foreach ($ipPermisson in $PortPermissionList)
             {
@@ -55,26 +41,26 @@ function Get-AWSEC2Details
                 Write-Host "IP address in security group:" $ipInSecurityGroup "for port:" $ipPermisson.FromPort
                 
                 If ($currentIp -ne $ipInSecurityGroup)
+                {
+                    Write-Host "Revoking permission for IP" $ipPermisson.Ipv4Ranges.CidrIp.Split("/")[0] "for port: " $ipPermisson.FromPort 
+                    if (!$DryRun)
                     {
-                        Write-Host "Revoking permission for IP" $ipPermisson.Ipv4Ranges.CidrIp.Split("/")[0] "for port: " $ipPermisson.FromPort 
-                        if (!$DryRun)
-                        {
                         
-                            try 
-                            {
+                        try 
+                        {
                             
                             Revoke-EC2SecurityGroupIngress -GroupId $secGroup.GroupId -IpPermissions $ipPermisson   
                             
-                            } 
-                            catch 
-                            {
-                                $ErrorMessage = $_.Exception.Message
-                                Write-Error "Revoke-EC2SecurityGroupIngress - Error: $ErrorMessage"
-                                Continue
-                            }
+                        } 
+                        catch 
+                        {
+                            $ErrorMessage = $_.Exception.Message
+                            Write-Error "Revoke-EC2SecurityGroupIngress - Error: $ErrorMessage"
+                            Continue
+                        }
                       
                         
-                        }
+                    }
                         
                             $cidrBlocks = New-Object 'collections.generic.list[string]'
                             $cidrBlocks.add($currentIp + "/32")
@@ -86,36 +72,36 @@ function Get-AWSEC2Details
                             
                             Write-Host "Granting permission for IP" $newIpPermissions.IpRanges.Split("/")[0] "for port" $newIpPermissions.FromPort 
                         
-                        if (!$DryRun)
-                        {
+                    if (!$DryRun)
+                    {
                             
-                            try 
-                            {
-                        
+                        try 
+                        {
+                       
                             Grant-EC2SecurityGroupIngress -GroupId $secGroup.GroupId -IpPermissions $newIpPermissions 
                             
-                            } 
-                            catch 
-                            {
-                                $ErrorMessage = $_.Exception.Message
-                                Write-Error "Grant-EC2SecurityGroupIngress - Error: $ErrorMessage"
-                                Continue
-                            }
-                                                          
+                        } 
+                        catch 
+                        {
+                            $ErrorMessage = $_.Exception.Message
+                            Write-Error "Grant-EC2SecurityGroupIngress - Error: $ErrorMessage"
+                            Continue
                         }
+                                                          
                     }
+                }
                 
                 else
                     
-                    {
-                        Write-Host "Security group is up-to-date"
-                    }
+                {
+                    Write-Host "Security group is up-to-date"
+                }
                     
-                    Write-Host "-----------------------------------"
+                Write-Host "-----------------------------------"
             }
 
         }   
-}          
+}      
 
 #Get-AWSEC2Details  "22"   "192.168.1.1"  $False
 Get-AWSEC2Details $LambdaInput.portToCheck $LambdaInput.currentIp $LambdaInput.dryRun
