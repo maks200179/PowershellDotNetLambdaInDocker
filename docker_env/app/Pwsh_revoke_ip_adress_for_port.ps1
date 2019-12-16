@@ -8,9 +8,9 @@
 
 
 
-$portToCheck = $LambdaInput.portToCheck
-$currentIp = $LambdaInput.currentIp
-$dryRun = $LambdaInput.dryRun
+#$portToCheck = $LambdaInput.portToCheck
+#$currentIp = $LambdaInput.currentIp
+#$dryRun = $LambdaInput.dryRun
 
 
 
