@@ -108,7 +108,7 @@ The test event json.
 {
   "portToCheck": "22",
   "currentIp": "the_ip_you_want_to_allow_connect_to_port_22",
-  "dryRun": "$false"
+  "dryRun": $false
 }
 ```
 #### EC2 policy 
